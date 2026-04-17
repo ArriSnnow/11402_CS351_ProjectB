@@ -1,0 +1,9 @@
+/Users/Arri/git repo/11402_CS351_ProjectB/build/CMakeFiles/csv_db.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/CMakeFiles/test.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/CMakeFiles/edit_cache.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/CMakeFiles/rebuild_cache.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/CMakeFiles/test_csv_parser.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/CMakeFiles/test_database.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/CMakeFiles/test.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/CMakeFiles/edit_cache.dir
+/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/CMakeFiles/rebuild_cache.dir

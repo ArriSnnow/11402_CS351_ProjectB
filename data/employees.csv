@@ -1,0 +1,6 @@
+id,name,department,salary,active
+1,Alice,Engineering,85000.50,true
+2,Bob,Marketing,62000.00,false
+3,Carol,Engineering,91000.75,true
+4,Dave,HR,55000.00,true
+5,"Smith, John",Marketing,67000.00,false
