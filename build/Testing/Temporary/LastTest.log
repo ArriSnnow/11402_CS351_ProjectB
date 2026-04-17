@@ -1,0 +1,24 @@
+Start testing: Apr 17 08:40 CST
+----------------------------------------------------------
+1/1 Testing: test_csv_parser
+1/1 Test: test_csv_parser
+Command: "/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/test_csv_parser"
+Directory: /Users/Arri/git repo/11402_CS351_ProjectB/build/tests
+"test_csv_parser" start time: Apr 17 08:40 CST
+Output:
+----------------------------------------------------------
+PASS: header detection
+PASS: row count
+PASS: type inference
+PASS: quoted field with comma
+
+All tests passed!
+<end of output>
+Test time =   0.61 sec
+----------------------------------------------------------
+Test Passed.
+"test_csv_parser" end time: Apr 17 08:40 CST
+"test_csv_parser" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 17 08:40 CST
