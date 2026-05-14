@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/Arri/git repo/11402_CS351_ProjectB/build/cmake_install.cmake",
+		"/Users/Arri/git repo/11402_CS351_ProjectB/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
