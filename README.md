@@ -52,11 +52,17 @@ The query engine supports the following SQL-like operations:
 - C++ compiler (g++ recommended)
 - Standard C++ libraries
 
-### Compilation
-Use the provided build task in VS Code or compile manually:
+### Build
 
 ```bash
-g++ -g main.cpp -o csv_db
+cmake -S . -B build
+cmake --build build
+```
+
+### Run tests
+
+```bash
+ctest --test-dir build --output-on-failure
 ```
 
 ### Usage
@@ -73,8 +79,12 @@ LOAD employees.csv
 -- Simple query
 SELECT name, department FROM employees WHERE salary > 50000
 
--- Aggregated query
-SELECT department, COUNT(*), AVG(salary) FROM employees GROUP BY department ORDER BY AVG(salary) DESC LIMIT 5
+-- Sorted + limited
+SELECT name, salary FROM employees WHERE salary > 60000 ORDER BY salary DESC LIMIT 5
+
+-- Aggregate (one function per query; GROUP BY is not supported)
+SELECT AVG(salary) FROM employees
+SELECT COUNT(*) FROM employees WHERE active = true
 ```
 
 ## Architecture
@@ -91,7 +101,7 @@ The system consists of:
 - In-memory only (data must fit in RAM)
 - No persistent storage
 - Limited to single-table operations
-- Basic aggregation support
+- Aggregates run one function per query (COUNT, SUM, AVG, MIN, MAX); no GROUP BY
 - No JOIN operations
 
 ## Future Enhancements
@@ -101,6 +111,68 @@ The system consists of:
 - Advanced aggregation functions
 - Query optimization
 - Export results to various formats
+
+## Intended Use
+
+Run the program from the terminal:
+```bash
+./build/csv_db
+
+On startup you will see:
+
+=====================================
+  CS351 CSV Mini Database v1.0
+=====================================
+Commands:
+  LOAD <filepath>         - Load a CSV file
+  SELECT ...              - Query a table
+  HELP                    - Show this menu
+  EXIT                    - Quit the program
+=====================================
+db>
+
+### Example Session
+
+    db> LOAD data/employees.csv
+    ✓ Table 'employees' loaded (5 rows, 5 columns)
+
+    db> SELECT name, salary FROM employees WHERE salary > 70000
+    name      salary
+    -------   ----------
+    Alice     85000.50
+    Carol     91000.75
+    (2 rows)
+
+    db> EXIT
+    Goodbye!
+
+### Error Handling
+
+    db> LOAD data/fake.csv
+    ✗ Error: Cannot open file 'data/fake.csv'
+
+    db> SELECT * FROM students
+    ✗ Error: Table 'students' not found. Use LOAD first.
+
+    db> blah blah
+    ✗ Error: Invalid command. Type HELP for usage.
+
+## Requirements
+
+| # | Requirement | Type |
+|---|---|---|
+| R1 | System shall load CSV files into memory via LOAD | Functional |
+| R2 | System shall support SELECT with column selection | Functional |
+| R3 | System shall filter rows using WHERE clause | Functional |
+| R4 | System shall sort results using ORDER BY ASC/DESC | Functional |
+| R5 | System shall limit results using LIMIT | Functional |
+| R6 | System shall support COUNT, SUM, AVG, MIN, MAX | Functional |
+| R7 | System shall display clear error messages | Functional |
+| R8 | System shall support HELP and EXIT commands | Functional |
+| R9 | System shall handle CSV files up to 10,000 rows | Non-Functional |
+| R10 | Query response time shall be under 1 second | Non-Functional |
+| R11 | System shall run on macOS and Linux | Non-Functional |
+
 
 ---
 
